@@ -653,7 +653,6 @@ section {
     flex-wrap:wrap;
     gap: 24px;
     row-gap: 48px;
-    
 }
 
 .cont-portf-bord {
@@ -1041,6 +1040,7 @@ img {
 
 .portfolio .container {
     max-width: 768px;
+    padding: 0;
 }
 
 .footer-style {
