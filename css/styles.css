@@ -61,9 +61,7 @@ section {
 }
 
 .header-address {
-    visibility: hidden;
-    width: 0;
-    height: 0;
+    display: none;
 }
 
 .header-contacts:hover,
@@ -76,11 +74,11 @@ section {
     position: relative;
     color:#404bbf;
     font-size: 16px;
-    height: 48px;
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.32px;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 24px 0;
 }
 
 .header-nav-inactive {
@@ -92,6 +90,7 @@ section {
     line-height: 1.5;
     letter-spacing: 0.32px;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 24px 0;
 }
 
 .header-nav-inactive:hover,
@@ -115,30 +114,35 @@ section {
 .container-logo-nav {
     display: flex;
     justify-content: space-between;
-    padding: 16px 0;
+    align-items: center;
 }
 
 .mob-menu-ref {
     display: flex;
+    padding: 16px 0;
+}
+
+.backdrop-mob {
+    position: relative;
+    opacity: 0;
+    visibility:hidden;
+    pointer-events: none;
+
 }
 
 .mobile-menu {
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     background-color: white;
     padding: 72px 16px 40px;
-    position: fixed;
-    opacity: 0;
-    left: 0;
     top: 0;
-    visibility:hidden;
-    pointer-events: none;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .mobile-menu.is-open {
     opacity: 1;
-    background-color: rgba(46, 47, 66, 0.4);
     pointer-events: auto;
     visibility: visible;
 }
@@ -159,13 +163,22 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 0 24px 0;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: transparent;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0;
     cursor: pointer;
+}
+
+.mob-close-button:hover, .mob-close-button:focus, .mob-close-button:active {
+    background-color: #404BBF;
+}
+
+.mob-close-button:hover .close-butt-icon,
+.mob-close-button:focus .close-butt-icon,
+.mob-close-button:active .close-butt-icon {
+    fill: #FFFFFF;
 }
 
 .mob-menu-active {
@@ -211,12 +224,13 @@ section {
 
 .mob-icons-list {
     display: flex;
+    justify-content: center;
     gap: 40px;
 }
 
 .main-page-descr {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 48px;
     color: #FFF;
     font-size: 36px;
     font-style: normal;
@@ -224,7 +238,6 @@ section {
     line-height: 1.07;
     letter-spacing: 1.12px;
     text-align: center;
-    padding-bottom: 48px;
     max-width: 216px;
 }
 
@@ -242,33 +255,33 @@ section {
 }
 
 .backdrop {
-    position: fixed;
+    position: relative;
     opacity: 0;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    visibility:hidden;
+    background-color: rgba(46, 47, 66, 0.4);
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-open {
     opacity: 1;
-    background-color: rgba(46, 47, 66, 0.4);
     pointer-events: auto;
     visibility: visible;
 }
 
 .modal {
-    position: absolute;
+    position: fixed;
     background: #fcfcfc;
-    display: flex;
-    flex-direction: column;
     top: 50%;
     left: 50%;
-    width: 288px;
-    min-height: 623px;
+    width: calc(100% - 32px);
+    max-width: 408px;
+    height: auto;
+    max-height: 623px;
     margin: auto;
     border-radius: 4px;
     padding: 72px 16px 24px 16px;
@@ -380,7 +393,7 @@ section {
 
 .form-textarea {
     padding: 8px 16px;
-    width: 256px;
+    width: 100%;
     height: 120px;
     color: rgba(46, 47, 66, 0.4);
     font-size: 12px;
@@ -421,11 +434,11 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 16px;
+    min-width: 16px;
     height: 16px;
     border: 1px solid rgba(46, 47, 66, 0.4);
     border-radius: 2px;
-    margin-right: 8px;
+    margin-right: 6px;
     fill: transparent;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -437,13 +450,14 @@ section {
 }
 
 .policy2 {
-    display: flex;
-    flex-direction: column;
-    width: 244px;
+    display: inline;
+    width: auto;
 }
 
 .privacy-style {
     color: #4d5ae5;
+    display: inline-flex;
+    width: 81px;
 }
 
 .div-form-checkbox {
@@ -519,6 +533,7 @@ section {
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 72px;
 }
 
@@ -581,6 +596,7 @@ section {
 
 .benefits-listitem {
     width: 100%;
+    max-width: 340px;
 }
 
 .benefits-paragraph {
@@ -606,9 +622,10 @@ section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 24px;
     row-gap: 72px;
+    max-width: 264px;
+    
 }
 
 .team-persons {
@@ -673,6 +690,10 @@ section {
     background: rgb(77, 90, 229);
 }
 
+.portfolio .container {
+    max-width: 320px;
+}
+
 .portfolio-item {
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -718,14 +739,14 @@ img {
     display: flex;
     background: #2E2F42;
     padding: 100px 0;
+    
 }
 
 .footer-style .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     row-gap: 72px;
-    align-items: baseline;
+    max-width: 320px;
 }
 
 .footer-header {
@@ -879,6 +900,14 @@ img {
     margin-left: 16px;
 }
 
+.our-team .container {
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .container {
     margin: 0 auto;
     padding: 0 16px;
@@ -898,27 +927,22 @@ img {
     padding: 24px 0;
 }
 
-@media (min-resolution: 192dpi) and (min-width: 768px) {
-    .effective-solution {
-        background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/Dark-bg-tablet-2x.jpg);
-    }
-}
+
 
 @media (min-width: 768px) {
     .mob-menu-butt {
         visibility: hidden;
         position: absolute;
     }
-    
+
+.benefits-headers {
+    text-align: left;
+}
+
 .modal {
     width: 408px;
     min-height: 584px;
     padding: 72px 24px 24px 24px;
-}
-
-.policy2 {
-    display:inline;
-    width: auto;
 }
 
 .form-textarea {
@@ -943,7 +967,6 @@ img {
         }
 
     .container-logo-nav {
-        padding: 24px 0 0 0;
     }
 
 .contacts-list {
@@ -953,11 +976,9 @@ img {
 }
 
 .header-address {
-            visibility: visible;
             font-style: normal;
             display: flex;
-            padding: 16px 0;
-            margin-left: auto;
+            align-items: center;
             width: auto;
         }
 
@@ -978,6 +999,7 @@ img {
 
     .header-border > .container {
             display: flex;
+            justify-content: space-between;
         }
 
     .main-page-descr {
@@ -1000,18 +1022,38 @@ img {
 }
 
 .benefits-listitem {
-    width: calc((100% - 24px) / 2);
+    max-width: calc((100% - 24px) / 2);
+    width: 356px;
+    
+}
+
+.our-team .container {
+    display: flex;
+    justify-content: center;
 }
 
 .cont-team-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    max-width: calc((264px * 2) + 24px);
 }
+
+.portfolio .container {
+    max-width: 768px;
+}
+
+.footer-style {
+    justify-content: center;
+}
+
+.footer-style .container {
+    max-width: 584px;
+}
+
 .footer-1st {
     margin-right: 24px;
     width: auto;
-    
 }
 .footer-text {
     max-width: 264px;
@@ -1035,9 +1077,10 @@ img {
 
 }
 
-@media (min-resolution: 192dpi) and (min-width: 1158px) {
+    
+@media (min-resolution: 192dpi) and (min-width: 768px) {
     .effective-solution {
-        background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/people-office1-2x.jpg);
+        background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/Dark-bg-tablet-2x.jpg);
     }
 }
 
@@ -1060,7 +1103,7 @@ img {
 }
 .header-address {
     height: auto;
-    padding: 24px 0;
+    align-items: center;
 }
     .logo-header {
         margin-right: 76px;
@@ -1069,9 +1112,9 @@ img {
     .effective-solution {
         max-width: 1440px;
         padding: 188px 0;
-        background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/people-office1.jpg);
+        background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/people-office1.jpg)
     }
-    section {
+    .section {
         padding: 120px 0;
     }
 
@@ -1096,7 +1139,6 @@ img {
 .benefits-headers {
     color: #2E2F42;
     font-size: 20px;
-    text-align: left;
     font-weight: 500;
     font-style: normal;
     line-height: 1.2;
@@ -1112,9 +1154,24 @@ img {
     flex-wrap: wrap;
     gap: 24px;
 }
+
+.cont-team-list {
+    flex-wrap: nowrap;
+    width: auto;
+    max-width: 100%;
+}
+
+.portfolio .container {
+    max-width: 1158px;
+}
+
 .portfolio-item {
     box-shadow: none;
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-style .container {
+    max-width: 1158px;
 }
 
 .footer-1st {
@@ -1137,6 +1194,12 @@ img {
     display: flex;
     flex-direction: row;
     gap: 40px;
+}
+
+@media (min-resolution: 192dpi) and (min-width: 1158px) {
+    .effective-solution {
+        background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/people-office1-2x.jpg);
+    }
 }
 
 }
