@@ -141,7 +141,7 @@ section {
     height: 100%;
 }
 
-.mobile-menu.is-open {
+.backdrop-mob.is-open {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
@@ -255,22 +255,25 @@ section {
 }
 
 .backdrop {
-    position: relative;
+    position: absolute;
     opacity: 0;
     left: 0;
     top: 0;
+    background-color: rgba(46, 47, 66, 0.4);
     width: 100%;
     height: 100%;
-    background-color: rgba(46, 47, 66, 0.4);
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-open {
+    background-color: rgba(46, 47, 66, 0.4);
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
+    width: 100%;
+    height: 100%;
 }
 
 .modal {
@@ -284,7 +287,7 @@ section {
     max-height: 623px;
     margin: auto;
     border-radius: 4px;
-    padding: 72px 16px 24px 16px;
+    padding: 72px 15px 24px 16px;
     transform: translate(-50%, -50%);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -693,6 +696,30 @@ section {
     max-width: 320px;
 }
 
+#banking-pc {
+    display: none;
+}
+
+#payment-pc {
+    display: none;
+}
+
+#meditation-pc {
+    display: none;
+}
+
+#taxi-pc {
+    display: none;
+}
+
+#screen-pc {
+    display: none;
+}
+
+#online-pc {
+    display: none;
+}
+
 .portfolio-item {
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -999,6 +1026,7 @@ img {
     .header-border > .container {
             display: flex;
             justify-content: space-between;
+            max-width: 768px;
         }
 
     .main-page-descr {
@@ -1040,7 +1068,54 @@ img {
 
 .portfolio .container {
     max-width: 768px;
-    padding: 0;
+}
+
+#banking-pc {
+    display: block;
+}
+
+#banking-mob {
+    display: none;
+}
+
+#payment-pc {
+    display: block;
+}
+
+#payment-mob {
+    display: none;
+}
+
+#meditation-pc {
+    display: block;
+}
+
+#meditation-mob {
+    display: none;
+}
+
+#taxi-pc {
+    display: block;
+}
+
+#taxi-mob {
+    display: none;
+}
+
+#screen-pc {
+    display: block;
+}
+
+#screen-mob {
+    display: none;
+}
+
+#online-pc {
+    display: block;
+}
+
+#online-mob {
+    display: none;
 }
 
 .footer-style {
@@ -1101,6 +1176,11 @@ img {
     align-items: center;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.header-border>.container {
+    max-width: 1158px;
+}
+
 .header-address {
     height: auto;
     align-items: center;
@@ -1184,6 +1264,7 @@ img {
 
 .footer-third {
     width: auto;
+    justify-content:flex-start;
 }
 
 .footer-input {
