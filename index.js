@@ -2,7 +2,7 @@ const data = [
   ".backdrop",
   ".mob-close-button",
   ".close-button",
-  ".close-butt-icon",
+  ".close-butt-icon", //тут є питання. Кнопка закриття складно відслідковується, тому що event.target інколи випадає саме на іконку хрестика. Тому довелося додавати всі стилі, які включає кнопка закриття.
   ".close-butt-use",
 ];
 const orderButton = document.querySelector("[data-open-form]");
